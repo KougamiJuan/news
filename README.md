@@ -1,10 +1,28 @@
-# NewsAggregatorV2
+# News Aggregator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+News Aggregator is a news viewer that extracts information from multiple RSS feeds and sorts them by date.
+
+  - Multiple RSS feeds
+  - sorts them by date
+  - Filter by RSS feed
+  - Convert XML structure to JSON
+
+# Tech
+
+* [Angular](https://angular.io/) 11.0.5 - Platform for building mobile and desktop web applications
+* [Compodoc](https://compodoc.app/) 1.1.11 - Generating documentation for your Angular project
+* [Firebase](https://firebase.google.com/) - Helps you build and run successful apps
+* [Travis CI](https://travis-ci.com/) - Continuous integration service
+
+# Configuration
+
+- Run `npm install`
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+*In the package.json file a script is configured that automatically opens a new tab in the browser. Feel free to change this instruction*
+
+- Run `npm start`
 
 ## Code scaffolding
 
@@ -12,16 +30,8 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+*In the package.json file, a script is configured that by default uses the `--prod` flag for a production build. Feel free to change this instruction*
 
-## Running unit tests
+The build artifacts will be stored in the `dist/` directory.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Run `npm run build`
