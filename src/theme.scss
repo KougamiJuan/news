@@ -236,6 +236,52 @@ $altTheme: (
 }
 
 // Specific component overrides, pieces that are not in line with the general theming
+// Specific component overrides, pieces that are not in line with the general theming
+$height-size: 64px;
+$width-size: 85%;
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: $height-size;
+}
+.mat-drawer-container {
+  height: calc(100vh - #{$height-size});
+}
+.mat-drawer {
+  width: calc(100vw - #{$width-size});
+  @media only screen and (max-width: 992px) {
+    width: 200px;
+  }
+}
+.mat-expansion-panel:not([class*="mat-elevation-z"]) {
+  box-shadow: none;
+}
+.mat-expansion-panel:not(.mat-expanded)
+  .mat-expansion-panel-header:hover:not([aria-disabled="true"]) {
+  background: rgba(25, 117, 210, 0.08);
+}
+.mat-card {
+  padding: 16px 4px !important;
+}
+.mat-card-header .mat-card-title {
+  font-size: 15px;
+}
+.mat-card-header-text {
+  margin: 0 8px !important;
+}
+.mat-card-subtitle,
+.mat-card-content {
+  font-size: 12px;
+}
+.mat-paginator-container {
+  padding: 0 5px !important;
+}
+.mat-paginator-outer-container {
+  width: 362px;
+}
+.mat-paginator-range-actions {
+  width: 100%;
+}
 
 // Handle buttons appropriately, with respect to line-height
 .mat-raised-button, .mat-stroked-button, .mat-flat-button {
