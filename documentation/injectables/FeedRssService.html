@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
         <link rel="stylesheet" href="../styles/postmark.css">
     </head>
     <body>
@@ -39,7 +40,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>FeedRssService</li>
+  <li >FeedRssService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,11 +61,12 @@
             <code>src/app/core/services/feed-rss.service.ts</code>
         </p>
 
+
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Feed connection service. </p>
+                <p>Feed connection service.</p>
 
             </p>
 
@@ -85,7 +87,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#getFeeds">getFeeds</a>
+                                <a href="#getFeeds" >getFeeds</a>
                             </li>
                         </ul>
                     </td>
@@ -116,7 +118,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Performs HTTP requests </p>
+                            <div class="io-description"><p>Performs HTTP requests</p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -161,10 +163,8 @@
                 <td class="col-md-4">
                     <a name="getFeeds"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            getFeeds
-                        </b>
+                        <span class="modifier">Async</span>
+                        <span ><b>getFeeds</b></span>
                         <a href="#getFeeds"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -179,8 +179,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/core/services/feed-rss.service.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/app/core/services/feed-rss.service.ts:18</a></div>
                 </td>
             </tr>
 
@@ -220,9 +220,8 @@ import { TOPICS, PROXY_URL } from &#x27;src/app/utils/constants&#x27;;
   providedIn: &#x27;root&#x27;
 })
 export class FeedRssService {
-
   /** Performs HTTP requests */
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   /**
    * Function to get all xml feeds.
@@ -230,13 +229,16 @@ export class FeedRssService {
    */
   async getFeeds(): Promise&lt;any[]&gt; {
     const feedRss: any[] | PromiseLike&lt;any[]&gt; &#x3D; [];
-    await Promise.all(TOPICS.map(async topic &#x3D;&gt; {
-      const response &#x3D; await this.http.get(PROXY_URL + topic, { responseType: &#x27;text&#x27; }).toPromise();
-      feedRss.push(xmlToJson(response));
-    }));
+    await Promise.all(
+      TOPICS.map(async (topic) &#x3D;&gt; {
+        const response &#x3D; await this.http
+          .get(PROXY_URL + topic, { responseType: &#x27;text&#x27; })
+          .toPromise();
+        feedRss.push(xmlToJson(response));
+      })
+    );
     return feedRss;
   }
-
 }
 </code></pre>
     </div>
@@ -277,9 +279,9 @@ export class FeedRssService {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
