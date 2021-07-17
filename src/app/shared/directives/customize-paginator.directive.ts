@@ -83,8 +83,9 @@ export class CustomizePaginatorDirective implements AfterViewInit {
 
     // Initialize next page and last page buttons
     if (this.buttons.length === 0) {
-      const nodeArray = this.vr.element.nativeElement.childNodes[0]
-        .childNodes[0].childNodes[1].childNodes;
+      const nodeArray =
+        this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[1]
+          .childNodes;
       setTimeout(() => {
         for (const node of nodeArray) {
           if (node.nodeName === 'BUTTON') {
