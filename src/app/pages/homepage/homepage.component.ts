@@ -22,24 +22,34 @@ export class HomepageComponent implements OnInit {
    * Variables to add meta descriptions to the component
    * @param meta A service for managing HTML meta tags.
    */
-  constructor(private meta: Meta) { }
+  constructor(private meta: Meta) {}
 
   /** Initial execution method. */
   ngOnInit(): void {
-    this.meta.updateTag({ name: 'description', content: 'Homepage. Show all the news in small cards and you can filter by category and sort by date' });
-    this.meta.updateTag({ name: 'keywords', content: 'news, latest news, last minute, newspapers, breaking news' });
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Homepage. Show all the news in small cards and you can filter by category and sort by date'
+    });
+    this.meta.updateTag({
+      name: 'keywords',
+      content: 'news, latest news, last minute, newspapers, breaking news'
+    });
   }
 
   /**
    * Method to assign the transformed items to the news list.
    * @param items Transformed items representing news.
    */
-  collectItems(items: any[]): void { this.news = items; }
+  collectItems(items: any[]): void {
+    this.news = items;
+  }
 
   /**
    * Method that assigns the ascending or descending Boolean value to sort the news by dates.
    * @param dateOrder Ascending or descending value.
    */
-  transmitDateOrder(dateOrder: boolean): void { this.order = dateOrder; }
-
+  transmitDateOrder(dateOrder: boolean): void {
+    this.order = dateOrder;
+  }
 }

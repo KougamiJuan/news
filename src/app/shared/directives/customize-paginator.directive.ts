@@ -1,4 +1,13 @@
-import { AfterViewInit, Directive, Host, Optional, Renderer2, Self, ViewContainerRef, Input } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  Host,
+  Optional,
+  Renderer2,
+  Self,
+  ViewContainerRef,
+  Input
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 
 /** Directive to customize paginator. */
@@ -19,9 +28,12 @@ export class CustomizePaginatorDirective implements AfterViewInit {
 
   /** @ignore */
   @Input()
-
-  get showTotalPages(): number { return this._showTotalPages; }
-  set showTotalPages(value: number) { this._showTotalPages = value % 2 === 0 ? value + 1 : value; }
+  get showTotalPages(): number {
+    return this._showTotalPages;
+  }
+  set showTotalPages(value: number) {
+    this._showTotalPages = value % 2 === 0 ? value + 1 : value;
+  }
 
   /** Shows the number of buttons. */
   private _showTotalPages = 2;
@@ -38,20 +50,26 @@ export class CustomizePaginatorDirective implements AfterViewInit {
     private ren: Renderer2
   ) {
     // Sub to rerender buttons when next page and last page is used
-    this.matPag.page.subscribe((v: { pageIndex: number; }) => {
+    this.matPag.page.subscribe((v: { pageIndex: number }) => {
       this.switchPage(v.pageIndex);
     });
   }
 
   /** Create the buttons with their respective number. */
   private buildPageNumbers(): void {
-    const actionContainer = this.vr.element.nativeElement.querySelector('div.mat-paginator-range-actions');
-    const nextPageNode = this.vr.element.nativeElement.querySelector('button.mat-paginator-navigation-next');
-    const rangeLabel = this.vr.element.nativeElement.querySelector('div.mat-paginator-range-label');
+    const actionContainer = this.vr.element.nativeElement.querySelector(
+      'div.mat-paginator-range-actions'
+    );
+    const nextPageNode = this.vr.element.nativeElement.querySelector(
+      'button.mat-paginator-navigation-next'
+    );
+    const rangeLabel = this.vr.element.nativeElement.querySelector(
+      'div.mat-paginator-range-label'
+    );
 
     // Remove buttons before creating new ones
     if (this.buttons.length > 0) {
-      this.buttons.forEach(button => {
+      this.buttons.forEach((button) => {
         this.ren.removeChild(actionContainer, button);
       });
       // Empty state array
@@ -65,16 +83,25 @@ export class CustomizePaginatorDirective implements AfterViewInit {
 
     // Initialize next page and last page buttons
     if (this.buttons.length === 0) {
-      const nodeArray = this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[1].childNodes;
+      const nodeArray = this.vr.element.nativeElement.childNodes[0]
+        .childNodes[0].childNodes[1].childNodes;
       setTimeout(() => {
         for (const node of nodeArray) {
           if (node.nodeName === 'BUTTON') {
             this.ren.setStyle(node, 'color', 'white');
             this.ren.setStyle(node, 'margin', '2px');
             if (node.disabled) {
-              this.ren.setStyle(node, 'background-color', 'rgba(25, 118, 210, 0.6)');
+              this.ren.setStyle(
+                node,
+                'background-color',
+                'rgba(25, 118, 210, 0.6)'
+              );
             } else {
-              this.ren.setStyle(node, 'background-color', 'rgba(25, 118, 210, 1)');
+              this.ren.setStyle(
+                node,
+                'background-color',
+                'rgba(25, 118, 210, 1)'
+              );
             }
           }
         }
@@ -85,13 +112,23 @@ export class CustomizePaginatorDirective implements AfterViewInit {
 
     for (let i = 0; i < this.matPag.getNumberOfPages(); i = i + 1) {
       if (
-        (i < this._showTotalPages && this.currentPage < this._showTotalPages && i > this.rangeStart) ||
+        (i < this._showTotalPages &&
+          this.currentPage < this._showTotalPages &&
+          i > this.rangeStart) ||
         (i >= this.rangeStart && i <= this.rangeEnd)
       ) {
-        this.ren.insertBefore(actionContainer, this.createButton(i, this.matPag.pageIndex), nextPageNode);
+        this.ren.insertBefore(
+          actionContainer,
+          this.createButton(i, this.matPag.pageIndex),
+          nextPageNode
+        );
       } else {
         if (i > this.rangeEnd && !dots) {
-          this.ren.insertBefore(actionContainer, this.createButton(this.pageGapTxt, this.matPag.pageIndex), nextPageNode);
+          this.ren.insertBefore(
+            actionContainer,
+            this.createButton(this.pageGapTxt, this.matPag.pageIndex),
+            nextPageNode
+          );
           dots = true;
         }
       }
@@ -163,5 +200,4 @@ export class CustomizePaginatorDirective implements AfterViewInit {
   ngAfterViewInit(): void {
     this.initPageRange();
   }
-
 }
