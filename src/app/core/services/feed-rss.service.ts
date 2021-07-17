@@ -8,9 +8,8 @@ import { TOPICS, PROXY_URL } from 'src/app/utils/constants';
   providedIn: 'root'
 })
 export class FeedRssService {
-
   /** Performs HTTP requests */
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   /**
    * Function to get all xml feeds.
@@ -18,11 +17,14 @@ export class FeedRssService {
    */
   async getFeeds(): Promise<any[]> {
     const feedRss: any[] | PromiseLike<any[]> = [];
-    await Promise.all(TOPICS.map(async topic => {
-      const response = await this.http.get(PROXY_URL + topic, { responseType: 'text' }).toPromise();
-      feedRss.push(xmlToJson(response));
-    }));
+    await Promise.all(
+      TOPICS.map(async (topic) => {
+        const response = await this.http
+          .get(PROXY_URL + topic, { responseType: 'text' })
+          .toPromise();
+        feedRss.push(xmlToJson(response));
+      })
+    );
     return feedRss;
   }
-
 }

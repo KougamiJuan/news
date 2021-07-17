@@ -23,12 +23,7 @@ import { CustomizePaginatorDirective } from './directives/customize-paginator.di
     NewsCardComponent,
     CustomizePaginatorDirective
   ],
-  imports: [
-    FormsModule,
-    CommonModule,
-    MaterialModule,
-    HttpClientModule
-  ],
+  imports: [FormsModule, CommonModule, MaterialModule, HttpClientModule],
   exports: [
     MaterialModule,
     HeaderComponent,
@@ -37,4 +32,4 @@ import { CustomizePaginatorDirective } from './directives/customize-paginator.di
     NewsCardComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {}

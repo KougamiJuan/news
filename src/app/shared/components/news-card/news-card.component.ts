@@ -17,14 +17,17 @@ export class NewsCardComponent implements OnInit {
   @Input() orderDate!: boolean;
 
   /** Default constructor. */
-  constructor() { registerLocaleData(localeEsCo, 'es-CO'); }
-
-  /** Initial execution method. */
-  ngOnInit(): void {
+  constructor() {
+    registerLocaleData(localeEsCo, 'es-CO');
   }
 
+  /** Initial execution method. */
+  ngOnInit(): void {}
+
   /** Method invoked immediately after default change listener. */
-  ngOnChanges(): void { this.dateOrdering(); }
+  ngOnChanges(): void {
+    this.dateOrdering();
+  }
 
   /** Method to sort dates in ascending or descending order. */
   dateOrdering(): void {
@@ -38,5 +41,7 @@ export class NewsCardComponent implements OnInit {
   }
 
   /** Method to open a new browser tab with the url of the news. */
-  goToLink(url: string): void { window.open(url); }
+  goToLink(url: string): void {
+    window.open(url);
+  }
 }

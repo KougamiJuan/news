@@ -18,18 +18,23 @@ export class HeaderComponent implements OnInit {
   @Output() dateOrder = new EventEmitter<boolean>();
 
   /** Default constructor. */
-  constructor() { this.isClicked = this.isClickedMenu = false; }
+  constructor() {
+    this.isClicked = this.isClickedMenu = false;
+  }
 
   /** Initial execution method. */
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   /** Method to know what the status of the date is (Ascending or descending order) */
-  clickDate(): void { this.dateOrder.emit(this.isClicked = !this.isClicked); }
+  clickDate(): void {
+    this.dateOrder.emit((this.isClicked = !this.isClicked));
+  }
 
   /**
    * Method to know what the status of the menu is (to turn the icon to one side or
    * the other)
    */
-  clickMenu(): void { this.isClickedMenu = !this.isClickedMenu; }
-
+  clickMenu(): void {
+    this.isClickedMenu = !this.isClickedMenu;
+  }
 }

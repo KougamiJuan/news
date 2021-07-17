@@ -1,0 +1,8 @@
+{
+  "trailingComma": "none",
+  "arrowParens": "always",
+  "embeddedLanguageFormatting": "auto",
+  "enable": true,
+  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "css"
+}

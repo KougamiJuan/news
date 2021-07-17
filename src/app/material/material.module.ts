@@ -26,4 +26,4 @@ const matModules = [
   imports: [...matModules],
   exports: [...matModules]
 })
-export class MaterialModule { }
+export class MaterialModule {}
